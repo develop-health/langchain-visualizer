@@ -32,6 +32,9 @@ def get_new_format(og_format):
         if self.template_format != "f-string":
             return og_format(*args, **kwargs)
 
+        if self.partial_variables:
+            kwargs.update(self.partial_variables)
+
         return format_f(formatter, self.template, *args, **kwargs)
 
     return new_format
